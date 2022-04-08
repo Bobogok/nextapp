@@ -9,7 +9,7 @@ function Post({ post }: { post: any }) {
 // This function gets called at build time
 export async function getStaticPaths() {
   // Call an external API endpoint to get posts
-  const res = await axios('http://jsonplaceholder.typicode.com/posts')
+  const res = await axios('http://localhost:3001/posts')
   const posts = res.data
 
   // Get the paths we want to pre-render based on posts
@@ -26,7 +26,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }: { params: any }) {
   // params contains the post `id`.
   // If the route is like /posts/1, then params.id is 1
-  const res = await axios(`http://jsonplaceholder.typicode.com/posts/${params.id}`)
+  const res = await axios(`http://localhost:3001/posts/${params.id}`)
   const post  = res.data
 
   // Pass post data to the page via props
